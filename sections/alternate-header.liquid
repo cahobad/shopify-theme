@@ -1,0 +1,85 @@
+<header class="header" role="banner">
+  <a class="skip-link" href="#main">Go to content</a>
+  <div class="header__container">
+    <nav class="header__menu header-menu" aria-label="main">
+      <ul class="header-menu__list" role="list">
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Women </a>
+        </li>
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Men</a>
+        </li>
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Kids</a>
+        </li>
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Company</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="header__logo logo">
+      <a class="logo__link" href="/">
+        <img
+             class="logo__image"
+             src="https://cahobad.github.io/spurit-homework/images/susparsa-logo.svg"
+             alt=""
+             role="presentation"
+             />
+        <span class="visually-hidden">homepage</span>
+      </a>
+    </div>
+
+    <nav
+         class="header__menu header__menu--user-nav header-menu"
+         aria-label="user"
+         >
+      <ul class="header-menu__list" role="list">
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Account</a>
+        </li>
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Search</a>
+        </li>
+        <li class="header-menu__item">
+          <a class="header-menu__link" href="/">Cart (<span id="product-amount-cart">0</span><span class="visually-hidden"> items</span>)</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <hr class="header-line" aria-hidden="true">
+  <div class="header__container">
+    <nav class="breadcrumbs" aria-label="breadcrumbs">
+      <ol class="breadcrumbs__list" role="list">
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="/">Home</a>
+        </li>
+        <li class="breadcrumbs__item">
+          <a class="breadcrumbs__link" href="/">Women</a>
+        </li>
+        <li class="breadcrumbs__item">
+          <a aria-current="page" class="breadcrumbs__link breadcrumbs__link--current-page" href="/">White unisex t-shirt</a>
+        </li>
+      </ol>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+  {
+    "name": "alternate-header",
+    "settings": [
+		{
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image"
+        },
+		{
+          "type": "link_list",
+          "id": "main_menu",
+          "label": "Main menu"
+        }
+	]
+  }
+{% endschema %}
+

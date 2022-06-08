@@ -1,0 +1,34 @@
+{
+  "layout": "theme.alternate",
+  "sections": {
+    "alternate-main-product": {
+      "type": "alternate-main-product",
+      "blocks": {
+        "cecfe5a5-fcf0-4463-9019-a85991283b01": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "White T-shirt",
+            "main_product_description": "<p>lorem ipsum<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "cecfe5a5-fcf0-4463-9019-a85991283b01"
+      ],
+      "settings": {
+      }
+    },
+    "alternate-product-recomendations": {
+      "type": "alternate-product-recomendations",
+      "settings": {
+        "alternate_product_recomendations_title": "Lorem ipsum",
+        "alternate_product_recomendations_collection": "",
+        "alternate_product_recomendations_limit": 4
+      }
+    }
+  },
+  "order": [
+    "alternate-main-product",
+    "alternate-product-recomendations"
+  ]
+}

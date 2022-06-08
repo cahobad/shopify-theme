@@ -1,0 +1,182 @@
+<aside class="aside">
+  <section class="more-goods">
+    <h2 class="more-goods__heading">You may also like</h2>
+    <ul class="more-goods__list" role="list">
+      <li class="more-goods__item">
+        <a class="more-goods__link" href="/">
+          <img
+               class="more-goods__image"
+               src="https://cahobad.github.io/spurit-homework/images/DSC_2518.jpg"
+               alt=""
+               />
+          <h3 class="more-goods__heading">Product name</h3>
+          <ul
+              aria-labelledby="available-colors"
+              class="more-goods__colors-list"
+              role="list"
+              >
+            <li class="more-goods__color more-goods__color--raw-sienna">
+              Raw Sienna
+            </li>
+            <li class="more-goods__color more-goods__color--apricot">
+              Apricot
+            </li>
+            <li class="more-goods__color more-goods__color--mauvelous">
+              Mauvelous
+            </li>
+            <li
+                class="more-goods__color more-goods__color--bright-lavender"
+                >
+              Bright Lavender
+            </li>
+          </ul>
+          <p class="more-goods__price">
+            <span class="visually-hidden">Price: </span>CHF 40
+          </p>
+        </a>
+      </li>
+
+      <li class="more-goods__item">
+        <a class="more-goods__link" href="/">
+          <img
+               class="more-goods__image"
+               src="https://cahobad.github.io/spurit-homework/images/DSC_5389.jpg"
+               alt=""
+               />
+          <h3 class="more-goods__heading">Product name</h3>
+          <ul
+              aria-labelledby="available-colors"
+              class="more-goods__colors-list"
+              role="list"
+              >
+            <li class="more-goods__color more-goods__color--raw-sienna">
+              Raw Sienna
+            </li>
+            <li class="more-goods__color more-goods__color--apricot">
+              Apricot
+            </li>
+            <li class="more-goods__color more-goods__color--mauvelous">
+              Mauvelous
+            </li>
+            <li
+                class="more-goods__color more-goods__color--bright-lavender"
+                >
+              Bright Lavender
+            </li>
+          </ul>
+          <p class="more-goods__price">
+            <span class="visually-hidden">Price: </span>CHF 40
+          </p>
+        </a>
+      </li>
+
+      <li class="more-goods__item">
+        <a class="more-goods__link" href="/">
+          <img
+               class="more-goods__image"
+               src="https://cahobad.github.io/spurit-homework/images/DSC_2330.jpg"
+               alt=""
+               />
+          <h3 class="more-goods__heading">Product name</h3>
+          <ul
+              aria-labelledby="available-colors"
+              class="more-goods__colors-list"
+              role="list"
+              >
+            <li class="more-goods__color more-goods__color--raw-sienna">
+              Raw Sienna
+            </li>
+            <li class="more-goods__color more-goods__color--apricot">
+              Apricot
+            </li>
+            <li class="more-goods__color more-goods__color--mauvelous">
+              Mauvelous
+            </li>
+            <li
+                class="more-goods__color more-goods__color--bright-lavender"
+                >
+              Bright Lavender
+            </li>
+          </ul>
+          <p class="more-goods__sold">Sold out</p>
+          <p class="more-goods__price">
+            <span class="visually-hidden">Price: </span>CHF 40
+          </p>
+        </a>
+      </li>
+
+      <li class="more-goods__item">
+        <a class="more-goods__link" href="/">
+          <img
+               class="more-goods__image"
+               src="https://cahobad.github.io/spurit-homework/images/image6.jpg"
+               alt=""
+               />
+          <h3 class="more-goods__heading">Product name</h3>
+          <ul
+              aria-labelledby="available-colors"
+              class="more-goods__colors-list"
+              role="list"
+              >
+            <li class="more-goods__color more-goods__color--raw-sienna">
+              Raw Sienna
+            </li>
+            <li class="more-goods__color more-goods__color--apricot">
+              Apricot
+            </li>
+            <li class="more-goods__color more-goods__color--mauvelous">
+              Mauvelous
+            </li>
+            <li
+                class="more-goods__color more-goods__color--bright-lavender"
+                >
+              Bright Lavender
+            </li>
+          </ul>
+          <p class="more-goods__price">
+            <span class="visually-hidden">Price: </span> CHF 40
+          </p>
+        </a>
+      </li>
+    </ul>
+  </section>
+</aside>
+
+
+{% schema %}
+  {
+    "name": "Alternate recomendations",
+    "settings": [
+		{
+          "type": "text",
+          "id": "alternate_product_recomendations_title",
+          "label": "Title",
+          "default": "You may also like"
+        },
+		{
+          "type": "collection",
+          "id": "alternate_product_recomendations_collection",
+          "label": "Collection"
+        },
+		{
+          "type": "range",
+          "id": "alternate_product_recomendations_limit",
+          "min": 3,
+          "max": 6,
+          "step": 1,
+          "label": "product limit",
+          "default": 6
+        }
+	],
+	"presets": [
+		{
+			"name": "Alternate recomendations",
+            "settings": {
+                "alternate_product_recomendations_title": "Lorem ipsum",
+                "alternate_product_recomendations_collection": "",
+                "alternate_product_recomendations_limit": 4
+            }
+		}
+	]
+  }
+{% endschema %}
