@@ -2,16 +2,23 @@
   <article class="product">
     <div class="product__container">
       <div class="product__gallery">
-        <img
-             class="product__image"
-             src="https://cahobad.github.io/spurit-homework/images/white-unisex-t-shirt.jpg"
-             alt="girl in a white t-shirt."
-             />
+
+        {% assign images = product.media | where: "media_type", "image" %}
+
+        {% for image in images %}
+
+          <img
+          class="product__image"
+          src="{{ image.src }}"
+          alt="{{ image.alt }}"
+          />
+        {% endfor %}
+        
       </div>
 
       <div class="product__info">
-        <h1 id="product-name" class="product__heading">White unisex t-shirt</h1>
-        <p id="product-price" class="product__price">CHF 40</p>
+        <h1 id="product-name" class="product__heading">{{ product.title | escape }}</h1>
+        <p id="product-price" class="product__price">{{ product.price | money }}</p>
         <p class="product__tax">Tax included</p>
 
         <!-- Form start -->
@@ -309,12 +316,17 @@
         </form>
         <!-- Form end -->
 
-        <p class="product__desctiption">
-          A unisex basic garment with a loose fit. Light and comfortable to
-          your skin.
-        </p>
-        <p class="product__desctiption">Certification of cotton - GOTS</p>
+        {%- if product.description != blank -%}
+          <div class="product__desctiption">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+
       </div>
+    </div>
+
+    <div>
+      {{ product | json }}
     </div>
 
     <div class="product__container">
