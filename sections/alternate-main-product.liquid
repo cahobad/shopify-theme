@@ -10,7 +10,13 @@
           <img
           class="product__image"
           src="{{ image.src | image_url }}"
-          alt="{{ image.alt }}"
+
+          {% if image.alt %}
+            alt="{{ image.alt }}"
+          {% else %}
+            alt=""
+          {% endif %}
+
           />
         {% endfor %}
         
