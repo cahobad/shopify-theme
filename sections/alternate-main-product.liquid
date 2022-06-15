@@ -9,7 +9,7 @@
 
           <img
           class="product__image"
-          src="{{ image.src }}"
+          src="{{ image.src | image_url }}"
           alt="{{ image.alt }}"
           />
         {% endfor %}
