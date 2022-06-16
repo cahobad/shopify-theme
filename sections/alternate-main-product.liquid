@@ -6,8 +6,7 @@
         {% assign images = product.media | where: "media_type", "image" %}
 
         {% for image in images %}
-
-          <img
+        <img
           class="product__image"
           src="{{ image.src | image_url }}"
 
@@ -17,14 +16,20 @@
             alt=""
           {% endif %}
 
-          />
+        />
         {% endfor %}
         
       </div>
 
       <div class="product__info">
-        <h1 id="product-name" class="product__heading">{{ product.title | escape }}</h1>
-        <p id="product-price" class="product__price">{{ product.price | money }}</p>
+        <h1 id="product-name" class="product__heading">
+          {{ product.title | escape }}
+        </h1>
+
+        <p id="product-price" class="product__price">
+          {{ product.price | money }}
+        </p>
+
         <p class="product__tax">Tax included</p>
 
         <!-- Form start -->
