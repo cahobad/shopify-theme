@@ -22,7 +22,7 @@
       "type": "alternate-product-recomendations",
       "settings": {
         "alternate_product_recomendations_title": "Lorem ipsum",
-        "alternate_product_recomendations_collection": "",
+        "alternate_product_recomendations_collection": "fruits",
         "alternate_product_recomendations_limit": 4
       }
     }
