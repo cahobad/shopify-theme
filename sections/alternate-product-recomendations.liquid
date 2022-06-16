@@ -1,143 +1,19 @@
 <aside class="aside">
   <section class="more-goods">
-    <h2 class="more-goods__heading">You may also like</h2>
+
+    {% if section.settings.alternate_product_recomendations_title != blank %}
+      <h2 class="more-goods__heading">{{ section.settings.alternate_product_recomendations_title }}</h2>
+    {% endif %}
+
+
     <ul class="more-goods__list" role="list">
+      
+      {% for card in section.settings.alternate_product_recomendations_collection.products limit: section.settings.alternate_product_recomendations_limit %}
       <li class="more-goods__item">
-        <a class="more-goods__link" href="/">
-          <img
-               class="more-goods__image"
-               src="https://cahobad.github.io/spurit-homework/images/DSC_2518.jpg"
-               alt=""
-               />
-          <h3 class="more-goods__heading">Product name</h3>
-          <ul
-              aria-labelledby="available-colors"
-              class="more-goods__colors-list"
-              role="list"
-              >
-            <li class="more-goods__color more-goods__color--raw-sienna">
-              Raw Sienna
-            </li>
-            <li class="more-goods__color more-goods__color--apricot">
-              Apricot
-            </li>
-            <li class="more-goods__color more-goods__color--mauvelous">
-              Mauvelous
-            </li>
-            <li
-                class="more-goods__color more-goods__color--bright-lavender"
-                >
-              Bright Lavender
-            </li>
-          </ul>
-          <p class="more-goods__price">
-            <span class="visually-hidden">Price: </span>CHF 40
-          </p>
-        </a>
+        {% render "alternate-product-card", card: card %} 
       </li>
-
-      <li class="more-goods__item">
-        <a class="more-goods__link" href="/">
-          <img
-               class="more-goods__image"
-               src="https://cahobad.github.io/spurit-homework/images/DSC_5389.jpg"
-               alt=""
-               />
-          <h3 class="more-goods__heading">Product name</h3>
-          <ul
-              aria-labelledby="available-colors"
-              class="more-goods__colors-list"
-              role="list"
-              >
-            <li class="more-goods__color more-goods__color--raw-sienna">
-              Raw Sienna
-            </li>
-            <li class="more-goods__color more-goods__color--apricot">
-              Apricot
-            </li>
-            <li class="more-goods__color more-goods__color--mauvelous">
-              Mauvelous
-            </li>
-            <li
-                class="more-goods__color more-goods__color--bright-lavender"
-                >
-              Bright Lavender
-            </li>
-          </ul>
-          <p class="more-goods__price">
-            <span class="visually-hidden">Price: </span>CHF 40
-          </p>
-        </a>
-      </li>
-
-      <li class="more-goods__item">
-        <a class="more-goods__link" href="/">
-          <img
-               class="more-goods__image"
-               src="https://cahobad.github.io/spurit-homework/images/DSC_2330.jpg"
-               alt=""
-               />
-          <h3 class="more-goods__heading">Product name</h3>
-          <ul
-              aria-labelledby="available-colors"
-              class="more-goods__colors-list"
-              role="list"
-              >
-            <li class="more-goods__color more-goods__color--raw-sienna">
-              Raw Sienna
-            </li>
-            <li class="more-goods__color more-goods__color--apricot">
-              Apricot
-            </li>
-            <li class="more-goods__color more-goods__color--mauvelous">
-              Mauvelous
-            </li>
-            <li
-                class="more-goods__color more-goods__color--bright-lavender"
-                >
-              Bright Lavender
-            </li>
-          </ul>
-          <p class="more-goods__sold">Sold out</p>
-          <p class="more-goods__price">
-            <span class="visually-hidden">Price: </span>CHF 40
-          </p>
-        </a>
-      </li>
-
-      <li class="more-goods__item">
-        <a class="more-goods__link" href="/">
-          <img
-               class="more-goods__image"
-               src="https://cahobad.github.io/spurit-homework/images/image6.jpg"
-               alt=""
-               />
-          <h3 class="more-goods__heading">Product name</h3>
-          <ul
-              aria-labelledby="available-colors"
-              class="more-goods__colors-list"
-              role="list"
-              >
-            <li class="more-goods__color more-goods__color--raw-sienna">
-              Raw Sienna
-            </li>
-            <li class="more-goods__color more-goods__color--apricot">
-              Apricot
-            </li>
-            <li class="more-goods__color more-goods__color--mauvelous">
-              Mauvelous
-            </li>
-            <li
-                class="more-goods__color more-goods__color--bright-lavender"
-                >
-              Bright Lavender
-            </li>
-          </ul>
-          <p class="more-goods__price">
-            <span class="visually-hidden">Price: </span> CHF 40
-          </p>
-        </a>
-      </li>
+      {% endfor %}
+      
     </ul>
   </section>
 </aside>

@@ -1,0 +1,19 @@
+<a class="more-goods__link" href="{{ card.url }}">
+  <img
+       class="more-goods__image"
+       src="{{ card.featured_image | image_url }}"
+       alt=""
+       />
+  <h3 class="more-goods__heading">{{ card.title }}</h3>
+
+  <p class="more-goods__price">{{ card.vendor }}</p>
+
+  {% if card.available != true %}
+    <p class="more-goods__sold">Sold out</p>
+  {% endif %}
+  
+
+  <p class="more-goods__price">
+    <span class="visually-hidden">Price: </span>{{ card.price | money }}
+  </p>
+</a>
