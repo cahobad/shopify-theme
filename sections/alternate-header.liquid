@@ -1,34 +1,35 @@
+{{ 'section-alternate-header.css' | asset_url | stylesheet_tag }}
+
+
 <header class="header" role="banner">
   <a class="skip-link" href="#main">Go to content</a>
   <div class="header__container">
+
+    {% if section.settings.main_menu != blank %}
     <nav class="header__menu header-menu" aria-label="main">
       <ul class="header-menu__list" role="list">
-        <li class="header-menu__item">
-          <a class="header-menu__link" href="/">Women </a>
-        </li>
-        <li class="header-menu__item">
-          <a class="header-menu__link" href="/">Men</a>
-        </li>
-        <li class="header-menu__item">
-          <a class="header-menu__link" href="/">Kids</a>
-        </li>
-        <li class="header-menu__item">
-          <a class="header-menu__link" href="/">Company</a>
-        </li>
+        {% for link in section.settings.main_menu.links %}
+          <li class="header-menu__item">
+            <a class="header-menu__link" href="{{ link.url }}">{{ link.title }} </a>
+          </li>
+        {% endfor %}
       </ul>
     </nav>
+    {% endif %}
 
-    <div class="header__logo logo">
-      <a class="logo__link" href="/">
-        <img
-             class="logo__image"
-             src="https://cahobad.github.io/spurit-homework/images/susparsa-logo.svg"
-             alt=""
-             role="presentation"
-             />
-        <span class="visually-hidden">homepage</span>
-      </a>
-    </div>
+    {% if section.settings.logo_image != blank %}
+      <div class="header__logo logo">
+        <a class="logo__link" href="/">
+          <img
+              class="logo__image"
+              src="{{ section.settings.logo_image | image_url }}"
+              alt=""
+              role="presentation"
+              />
+          <span class="visually-hidden">homepage</span>
+        </a>
+      </div>
+    {% endif %}
 
     <nav
          class="header__menu header__menu--user-nav header-menu"
@@ -69,17 +70,17 @@
   {
     "name": "alternate-header",
     "settings": [
-		{
-          "type": "image_picker",
-          "id": "logo_image",
-          "label": "Logo image"
-        },
-		{
-          "type": "link_list",
-          "id": "main_menu",
-          "label": "Main menu"
-        }
-	]
+      {
+        "type": "image_picker",
+        "id": "logo_image",
+        "label": "Logo image"
+      },
+      {
+        "type": "link_list",
+        "id": "main_menu",
+        "label": "Main menu"
+      }
+	  ]
   }
 {% endschema %}
 
