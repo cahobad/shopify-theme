@@ -147,36 +147,36 @@
   {
     "name": "Alternate recomendations",
     "settings": [
-		{
-          "type": "text",
-          "id": "alternate_product_recomendations_title",
-          "label": "Title",
-          "default": "You may also like"
-        },
-		{
-          "type": "collection",
-          "id": "alternate_product_recomendations_collection",
-          "label": "Collection"
-        },
-		{
-          "type": "range",
-          "id": "alternate_product_recomendations_limit",
-          "min": 3,
-          "max": 6,
-          "step": 1,
-          "label": "product limit",
-          "default": 6
+      {
+        "type": "text",
+        "id": "alternate_product_recomendations_title",
+        "label": "Title",
+        "default": "You may also like"
+      },
+      {
+        "type": "collection",
+        "id": "alternate_product_recomendations_collection",
+        "label": "Collection"
+      },
+      {
+        "type": "range",
+        "id": "alternate_product_recomendations_limit",
+        "min": 3,
+        "max": 6,
+        "step": 1,
+        "label": "product limit",
+        "default": 6
+      }
+    ],
+    "presets": [
+      {
+        "name": "Alternate recomendations",
+        "settings": {
+            "alternate_product_recomendations_title": "Lorem ipsum",
+            "alternate_product_recomendations_collection": "",
+            "alternate_product_recomendations_limit": 4
         }
-	],
-	"presets": [
-		{
-			"name": "Alternate recomendations",
-            "settings": {
-                "alternate_product_recomendations_title": "Lorem ipsum",
-                "alternate_product_recomendations_collection": "",
-                "alternate_product_recomendations_limit": 4
-            }
-		}
-	]
+      }
+    ]
   }
 {% endschema %}
