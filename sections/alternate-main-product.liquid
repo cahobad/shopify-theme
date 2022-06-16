@@ -7,30 +7,36 @@
 
         {% assign images = product.media | where: "media_type", "image" %}
 
-        {% for image in images %}
-        <img
-          class="product__image"
-          src="{{ image.src | image_url }}"
+        {% if images.size > 0 %}
+          {% for image in images %}
+          <img
+            class="product__image"
+            src="{{ image.src | image_url }}"
 
-          {% if image.alt %}
-            alt="{{ image.alt }}"
-          {% else %}
-            alt=""
-          {% endif %}
+            {% if image.alt %}
+              alt="{{ image.alt }}"
+            {% else %}
+              alt=""
+            {% endif %}
 
-        />
-        {% endfor %}
-        
+          />
+          {% endfor %}
+        {% endif %}
+
       </div>
 
       <div class="product__info">
-        <h1 id="product-name" class="product__heading">
-          {{ product.title | escape }}
-        </h1>
-
-        <p id="product-price" class="product__price">
-          {{ product.price | money }}
-        </p>
+        {% if product.title != blank %}
+          <h1 id="product-name" class="product__heading">
+            {{ product.title | escape }}
+          </h1>
+        {% endif %}
+        
+        {% if product.price != blank %}
+          <p id="product-price" class="product__price">
+            {{ product.price | money }}
+          </p>
+        {% endif %}
 
         <p class="product__tax">Tax included</p>
 
@@ -338,104 +344,51 @@
       </div>
     </div>
 
+    
+    <!-- Accordion start -->
     <div class="product__container">
-      <!-- Accordion start -->
       <div class="product__accordion product-accordion">
-        <section class="product-accordion__container">
-          <h2 class="product-accordion__heading">
-            <button
-                    id="product-accordion__title1"
-                    class="product-accordion__button product-accordion__button--open"
-                    type="button"
-                    aria-expanded="true"
-                    aria-controls="product-accordion__content1"
-                    >
-              Sizing & Fit
-              <span class="product-accordion__button-icon-container">
-                <span class="product-accordion__button-icon"></span>
-              </span>
-            </button>
+    {% for block in section.blocks %}
+      {% if block.type == "accordeon" %}
 
-          </h2>
-
-          <div
-               id="product-accordion__content1"
-               class="product-accordion__content"
-               aria-hidden="false"
-               aria-labelledby="product-accordion__title1"
-               >
-            <p
-               class="product-accordion__text product-accordion__text--open"
-               >
-              Olga is 175cm, she is wearing a size S.
-            </p>
-          </div>
-        </section>
 
         <section class="product-accordion__container">
           <h2 class="product-accordion__heading">
             <button
-                    id="product-accordion__title2"
-                    class="product-accordion__button"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="product-accordion__content2"
-                    >
-              Composition & Care
+              id="product-accordion__title1"
+              class="product-accordion__button product-accordion__button--open"
+              type="button"
+              aria-expanded="true"
+              aria-controls="product-accordion__content1"
+              >
+              {{ block.settings.main_product_heading }}
               <span class="product-accordion__button-icon-container">
                 <span class="product-accordion__button-icon"></span>
               </span>
             </button>
-
           </h2>
 
           <div
-               id="product-accordion__content2"
-               class="product-accordion__content"
-               aria-hidden="true"
-               aria-labelledby="product-accordion__title2"
-               >
+            id="product-accordion__content1"
+            class="product-accordion__content"
+            aria-hidden="false"
+            aria-labelledby="product-accordion__title1"
+          >
             <p
-               class="product-accordion__text product-accordion__text--close"
-               >
-              Lorem ipsum dolor sit amet.
+              class="product-accordion__text product-accordion__text--open"
+              >
+              {{ block.settings.main_product_description }}
             </p>
           </div>
         </section>
 
-        <section class="product-accordion__container">
-          <h2 class="product-accordion__heading">
-            <button
-                    id="product-accordion__title3"
-                    class="product-accordion__button"
-                    type="button"
-                    aria-expanded="false"
-                    aria-controls="product-accordion__content3"
-                    >
-              Delivery & Returns
-              <span class="product-accordion__button-icon-container">
-                <span class="product-accordion__button-icon"></span>
-              </span>
-            </button>
-
-          </h2>
-
-          <div
-               id="product-accordion__content3"
-               class="product-accordion__content"
-               aria-hidden="true"
-               aria-labelledby="product-accordion__title3"
-               >
-            <p
-               class="product-accordion__text product-accordion__text--close"
-               >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </p>
-          </div>
-        </section>
+      {% endif %}
+    {% endfor %}
       </div>
-      <!-- Accordion end -->
     </div>
+    <!-- Accordion end -->
+
+    
   </article>
 </main>
   
@@ -443,36 +396,36 @@
 {% schema %}
   {
     "name": "Alternate main product",
-	"limit": 1,
-	"templates": ["product"],
-	"blocks": [
-		{
-			"name": "Accordeon",
-			"type": "accordeon",
-			"settings": [
-                {
-                  "type": "text",
-                  "id": "main_product_heading",
-                  "label": "Heading",
-                  "default": "Main product"
-                },
-                {
-                  "type": "richtext",
-                  "id": "main_product_description",
-                  "label": "Product description"
-                }
-            ]
-		}
-	],
-	"presets": [
-		{
-			"name": "Alternate main product yellow",
+    "limit": 1,
+    "templates": ["product"],
+    "blocks": [
+      {
+        "name": "Accordeon",
+        "type": "accordeon",
+        "settings": [
+          {
+            "type": "text",
+            "id": "main_product_heading",
+            "label": "Heading",
+            "default": "Main product"
+          },
+          {
+            "type": "richtext",
+            "id": "main_product_description",
+            "label": "Product description"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Alternate main product yellow",
             "blocks": [
-				{
-					"type": "accordeon"
-				}
-			]
-		}
-	]
+          {
+            "type": "accordeon"
+          }
+        ]
+      }
+    ]
   }
 {% endschema %}
