@@ -2,94 +2,94 @@
 
 <footer class="footer" role="contentinfo">
   <div class="footer__container">
+
+  {% for block in section.blocks %}
+    {% if block.type == "about" %}
+
     <section class="footer-container">
-      <h2 class="footer-container__heading">About</h2>
+      {% if block.settings.footer_linklist_title != blank %}
+        <h2 class="footer-container__heading">
+          {{ block.settings.footer_linklist_title }}
+        </h2>
+      {% endif %}
+      
+      {% if block.settings.paragraph != blank %}
+        <address class="footer-container__text">
+          {{ block.settings.paragraph }}
+        </address>
+      {% endif %}
 
-      <address class="footer-container__text">
-        Susparsa Store
-        <br />
-        Geneva, Switzerland
-      </address>
 
-      <ul class="footer__social-links" role="list">
-        <li class="social-links__item">
-          <a
-             class="social-links__link social-links__link--icon"
-             href="/"
-             target="_blank"
-             >
-            <img
-                 class="social-links__icon"
-                 src="https://cahobad.github.io/spurit-homework/images/facebook.svg"
-                 alt=""
-                 />
-            <span class="visually-hidden">open facebook in new tab</span>
-          </a>
-        </li>
-        <li class="social-links__item">
-          <a
-             class="footer-navigation__link footer-navigation__link--icon"
-             href="/"
-             target="_blank"
-             >
-            <img
-                 class="footer-container__social-icon"
-                 src="https://cahobad.github.io/spurit-homework/images/instagram.svg"
-                 alt=""
-                 />
-            <span class="visually-hidden">open instagram in new tab</span>
-          </a>
-        </li>
-      </ul>
+      {% if block.settings.footer_facebook_link or block.settings.footer_instagram_link %}
+        <ul class="footer__social-links" role="list">
+          
+          {% if block.settings.footer_facebook_link %}
+          <li class="social-links__item">
+            <a
+               class="social-links__link social-links__link--icon"
+               href="{{ block.settings.footer_facebook_link }}"
+               target="_blank"
+               >
+              <img
+                   class="social-links__icon"
+                   src="https://cahobad.github.io/spurit-homework/images/facebook.svg"
+                   alt=""
+                   />
+              <span class="visually-hidden">open facebook in new tab</span>
+            </a>
+          </li>
+          {% endif %}
+
+          {% if block.settings.footer_instagram_link %}
+          <li class="social-links__item">
+            <a
+               class="footer-navigation__link footer-navigation__link--icon"
+               href="{{ block.settings.footer_instagram_link }}"
+               target="_blank"
+               >
+              <img
+                   class="footer-container__social-icon"
+                   src="https://cahobad.github.io/spurit-homework/images/instagram.svg"
+                   alt=""
+                   />
+              <span class="visually-hidden">open instagram in new tab</span>
+            </a>
+          </li>
+          {% endif %}
+
+        </ul>
+      {% endif %}
     </section>
 
+    {% endif %}
+
+
+    {% if block.type == "menu" %}
     <section class="footer-container">
-      <h2 class="footer-container__heading">Company</h2>
+
+      {% if block.settings.footer_nav_title != blank %}
+        <h2 class="footer-container__heading">{{ block.settings.footer_nav_title }}</h2>
+      {% endif %}
+
+      {% if block.settings.footer_menu != blank %}
       <nav class="footer-navigation" aria-label="company">
         <ul class="footer-navigation__links-list" role="list">
+
+          {% for link in block.settings.footer_menu.links %}
           <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Women</a>
+            <a class="footer-navigation__link" href="{{ link.url }}">{{ link.title }}</a>
           </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Men</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Kids</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">About Us</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Our Materials</a>
-          </li>
+          {% endfor %}
         </ul>
       </nav>
-
+        
+      {% endif %}
     </section>
+      
+    {% endif %}
+  {% endfor %}
 
-    <section class="footer-container">
-      <h2 class="footer-container__heading">Useful Links</h2>
-      <nav class="footer-navigation" aria-label="useful">
-        <ul class="footer-navigation__links-list" role="list">
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Privacy Policy </a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Shipping Policy</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Return & Refund Policy</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/">Terms of Service</a>
-          </li>
-          <li class="footer-navigation__links-item">
-            <a class="footer-navigation__link" href="/"> Contact Us</a>
-          </li>
-        </ul>
-      </nav>
 
-    </section>
   </div>
   <div class="footer__copyright-container">
     <span><small class="footer__copyright">© Susparsa 2021</small></span>
@@ -97,58 +97,60 @@
 </footer>
 
 
+
+
 {% schema %}
   {
     "name": "alternate-footer",
-	"max_blocks": 4,
-	"blocks": [
-		{
-			"name": "About",
-			"type": "about",
-			"settings": [
-				{
-                  "type": "text",
-                  "id": "footer_linklist_title",
-                  "label": "Heading",
-                  "default": "About"
-                },
-				{
-                  "type": "richtext",
-                  "id": "paragraph",
-                  "label": "Paragraph"
-                },
-				{
-                  "type": "text",
-                  "id": "footer_facebook_link",
-                  "label": "Facebook link",
-                  "default": "https://facebook.com/"
-                },
-				{
-                  "type": "text",
-                  "id": "footer_instagram_link",
-                  "label": "Instagram link",
-                  "default": "https://instagram.com/"
-                }
-			]
-		},
-		{
-			"name": "Menu",
-			"type": "menu",
-			"settings": [
-				{
-                  "type": "text",
-                  "id": "footer_nav_title",
-                  "label": "Heading",
-                  "default": "Navigation"
-                },
-                {
-                  "type": "link_list",
-                  "id": "footer_menu",
-                  "label": "Menu"
-                }
-			]
-		}
-	]
+    "max_blocks": 4,
+    "blocks": [
+      {
+        "name": "About",
+        "type": "about",
+        "settings": [
+          {
+            "type": "text",
+            "id": "footer_linklist_title",
+            "label": "Heading",
+            "default": "About"
+          },
+          {
+            "type": "richtext",
+            "id": "paragraph",
+            "label": "Paragraph"
+          },
+          {
+            "type": "text",
+            "id": "footer_facebook_link",
+            "label": "Facebook link",
+            "default": "https://facebook.com/"
+          },
+          {
+            "type": "text",
+            "id": "footer_instagram_link",
+            "label": "Instagram link",
+            "default": "https://instagram.com/"
+          }
+        ]
+      },
+      {
+        "name": "Menu",
+        "type": "menu",
+        "settings": [
+          {
+            "type": "text",
+            "id": "footer_nav_title",
+            "label": "Heading",
+            "default": "Navigation"
+          },
+          {
+            "type": "link_list",
+            "id": "footer_menu",
+            "label": "Menu"
+          }
+        ]
+      }
+    ]
   }
 {% endschema %}
 
