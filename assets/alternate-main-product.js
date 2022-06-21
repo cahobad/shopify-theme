@@ -100,14 +100,14 @@ productColors.forEach(color => {
   })
 });
 
-
-
 /* Product end */
 
 
 
 /* Accordion start */
 
+
+// temp without IIFE 🙁
 
 const accordionButtons = document.querySelectorAll('.product-accordion__button');
 
@@ -123,7 +123,7 @@ accordionButtons.forEach((button) => {
 function accordionButtonClick(buttonIndex) {
 
   accordionButtons.forEach(buton => {
- 
+  
     if (buton.id === buttonIndex) { // this button was pressed
 
       if (buton.getAttribute('aria-expanded') == 'true') {
@@ -166,6 +166,7 @@ function accordionButtonClick(buttonIndex) {
         block.setAttribute('aria-hidden', 'true')
       }
     } else {
+      // this block need hidden
       if (block.getAttribute('aria-hidden') == 'true') {
         block.setAttribute('aria-hidden', 'false')
       }
@@ -173,8 +174,6 @@ function accordionButtonClick(buttonIndex) {
       block.classList.remove('product-accordion__content--visible');
     }
   })
-
-  
 }
 
 
@@ -185,40 +184,44 @@ Shopify.theme.sections.register('alternate-main-product', {
   // Shortcut function called when a section is loaded via 'sections.load()' or by the Theme Editor 'shopify:section:load' event.
   onLoad: function() {
     // Do something when a section instance is loaded
-    // Здесь должна быть инициализация
-    console.log('onLoad', 'Здесь должна быть инициализация');
+    
+    // не успел разобраться, как инициировать аккордион от сюда таким образом, чтобы отрабатывал onBlockSelect
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
   onUnload: function() {
     // Do something when a section instance is unloaded
     // Здесь должен быть дестрой если он необходим
-    console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
+    // console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
 
   },
 
   // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.
   onSelect: function() {
     // Do something when a section instance is selected
-    console.log('onSelect', '');
+    // console.log('onSelect', '');
   },
 
   // Shortcut function called when a section is deselected by the Theme Editor 'shopify:section:deselect' event.
   onDeselect: function() {
     // Do something when a section instance is deselected
-    console.log('onDeselect', '');
+    // console.log('onDeselect', '');
 
   },
 
   // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
   onBlockSelect: function(event) {
     // Do something when a section block is selected
-    console.log('onBlockSelect');
+    // console.log('onBlockSelect');
+
+    accordionButtonClick('button-' + event.detail.blockId)
+ 
   },
 
   // Shortcut function called when a section block is deselected by the Theme Editor 'shopify:block:deselect' event.
   onBlockDeselect: function(event) {
     // Do something when a section block is deselected
-    console.log('onBlockDeselect');
+    // console.log('onBlockDeselect');
+
   }
 });
