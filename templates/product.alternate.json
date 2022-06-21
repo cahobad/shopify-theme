@@ -10,10 +10,26 @@
             "main_product_heading": "White T-shirt",
             "main_product_description": "<p>lorem ipsum<\/p>"
           }
+        },
+        "e3127f49-2310-4d80-a923-242917adc01a": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "title 2",
+            "main_product_description": "<p>lorem for title 2<\/p>"
+          }
+        },
+        "80050911-644e-4595-a54c-476d450c6588": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "title 3",
+            "main_product_description": "<p>lorem for title 3<\/p>"
+          }
         }
       },
       "block_order": [
-        "cecfe5a5-fcf0-4463-9019-a85991283b01"
+        "cecfe5a5-fcf0-4463-9019-a85991283b01",
+        "e3127f49-2310-4d80-a923-242917adc01a",
+        "80050911-644e-4595-a54c-476d450c6588"
       ],
       "settings": {
       }

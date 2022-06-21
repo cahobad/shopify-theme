@@ -121,24 +121,44 @@ accordionButtons.forEach((button, index) => {
 
 
 function accordionButtonClick(buttonIndex) {
-  
-  if (accordionButtons[buttonIndex].getAttribute('aria-expanded') == 'true') {
-    accordionButtons[buttonIndex].setAttribute('aria-expanded', 'false');
 
-    accordionButtons[buttonIndex].classList.remove('product-accordion__button--open')
+  accordionButtons.forEach(buton => {
 
-  } else {
-    accordionButtons[buttonIndex].setAttribute('aria-expanded', 'true');
-
-    accordionButtons[buttonIndex].classList.add('product-accordion__button--open')
     
-  }
+    if (buton.id === buttonIndex) { // this button was pressed
+
+      if (buton.getAttribute('aria-expanded') == 'true') {
+        // accordion is open. need to close
+        buton.setAttribute('aria-expanded', 'false');
+    
+        buton.classList.remove('product-accordion__button--open')
+    
+      } else { 
+        // accordion is close. need to open
+        buton.setAttribute('aria-expanded', 'true');
+    
+        buton.classList.add('product-accordion__button--open')
+      }
+    } else {
+      // other button was pressed
+      if (buton.getAttribute('aria-expanded') == 'true') {
+        // accordion is open. need to close
+        buton.setAttribute('aria-expanded', 'false');
+    
+        buton.classList.remove('product-accordion__button--open')
+    
+      }
+
+    }
+    
+  });
+
+  
 
   accordionContents.forEach(block => {
 
-
-
     if (block.id === accordionButtons[buttonIndex].getAttribute('aria-controls')) {
+      // this block need show
       block.classList.toggle('product-accordion__content--visible');
       
       if (block.getAttribute('aria-hidden') == 'true') {
@@ -146,12 +166,15 @@ function accordionButtonClick(buttonIndex) {
       } else {
         block.setAttribute('aria-hidden', 'true')
       }
-      
+    } else {
+      if (block.getAttribute('aria-hidden') == 'true') {
+        block.setAttribute('aria-hidden', 'false')
+      }
+
+      block.classList.remove('product-accordion__content--visible');
     }
   })
 
-  
-  
   
 }
 
