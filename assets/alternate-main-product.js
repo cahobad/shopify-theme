@@ -113,9 +113,9 @@ const accordionButtons = document.querySelectorAll('.product-accordion__button')
 
 const accordionContents = document.querySelectorAll('.product-accordion__content');
 
-accordionButtons.forEach((button, index) => {
+accordionButtons.forEach((button) => {
   button.addEventListener('click', () => {
-    accordionButtonClick(index);
+    accordionButtonClick(button.id);
   });
 })
 
@@ -123,8 +123,7 @@ accordionButtons.forEach((button, index) => {
 function accordionButtonClick(buttonIndex) {
 
   accordionButtons.forEach(buton => {
-
-    
+ 
     if (buton.id === buttonIndex) { // this button was pressed
 
       if (buton.getAttribute('aria-expanded') == 'true') {
@@ -157,7 +156,7 @@ function accordionButtonClick(buttonIndex) {
 
   accordionContents.forEach(block => {
 
-    if (block.id === accordionButtons[buttonIndex].getAttribute('aria-controls')) {
+    if (block.getAttribute('aria-labelledby') == buttonIndex) {
       // this block need show
       block.classList.toggle('product-accordion__content--visible');
       
