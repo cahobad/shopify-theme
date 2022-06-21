@@ -5,9 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Aleksandr Sumaneev | SpurIT homework</title>
-    <link rel="stylesheet" href="{{ 'alternate-base.css' | asset_url }}" />
+    
     
     {{content_for_header}}
+
+    <link rel="stylesheet" href="{{ 'alternate-base.css' | asset_url }}" />
+
+    <script src="{{ 'theme-sections.min.js' | asset_url }}" defer></script>
+    
+    <script src="{{ 'alternate-main-product.js' | asset_url }}" defer></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded');
+        Shopify.theme.sections.load('alternate-main-product')
+      })
+  </script>
+
   </head>
   <body>
     {% section 'alternate-header' %}
@@ -20,7 +34,5 @@
       <div id="available-colors">available colors</div>
     </div>
     
-
-    {{ 'alternate-main-product.js' | asset_url | script_tag }}
   </body>
 </html>

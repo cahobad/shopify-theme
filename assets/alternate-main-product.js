@@ -1,3 +1,5 @@
+
+
 /* Product start */
 const productForm = document.querySelector('#product-form');
 const buttonAddProductToCart = document.querySelector('#product-form-add-to-cart');
@@ -106,33 +108,92 @@ productColors.forEach(color => {
 
 /* Accordion start */
 
+
 const accordionButtons = document.querySelectorAll('.product-accordion__button');
+
 const accordionContents = document.querySelectorAll('.product-accordion__content');
-const accordionTexts = document.querySelectorAll('.product-accordion__text');
 
 accordionButtons.forEach((button, index) => {
   button.addEventListener('click', () => {
-    if (button.classList.contains('product-accordion__button--open')) {
-      // accordion's block is open
-      // need to close
+    accordionButtonClick(index);
+  });
+})
 
-      button.classList.remove('product-accordion__button--open');
-      button.setAttribute('aria-expanded', false);
-      accordionContents[index].setAttribute('aria-hidden', true);
-      accordionTexts[index].classList.remove('product-accordion__text--open');
-      accordionTexts[index].classList.add('product-accordion__text--close');
+
+function accordionButtonClick(buttonIndex) {
+  
+
+  if (accordionButtons[buttonIndex].getAttribute('aria-expanded') == 'true') {
+    accordionButtons[buttonIndex].setAttribute('aria-expanded', 'false');
+  } else {
+    accordionButtons[buttonIndex].setAttribute('aria-expanded', 'true');
+  }
+
+  accordionContents.forEach(block => {
+
+
+
+    if (block.id === accordionButtons[buttonIndex].getAttribute('aria-controls')) {
+      block.classList.toggle('product-accordion__content--visible');
       
-    } else {
-      // accordion's block is close
-      // need to open
-      button.classList.add('product-accordion__button--open');
-      button.setAttribute('aria-expanded', true);
-      accordionContents[index].setAttribute('aria-hidden', false);
-      accordionTexts[index].classList.remove('product-accordion__text--close');
-      accordionTexts[index].classList.add('product-accordion__text--open');
+      if (block.getAttribute('aria-hidden') == 'true') {
+        block.setAttribute('aria-hidden', 'false')
+      } else {
+        block.setAttribute('aria-hidden', 'true')
+      }
       
     }
   })
-})
+
+  
+  
+  
+}
+
+
+
 
 /* Accordion end */
+
+
+Shopify.theme.sections.register('alternate-main-product', {
+  // Shortcut function called when a section is loaded via 'sections.load()' or by the Theme Editor 'shopify:section:load' event.
+  onLoad: function() {
+    // Do something when a section instance is loaded
+    // Здесь должна быть инициализация
+    console.log('onLoad', 'Здесь должна быть инициализация');
+  },
+
+  // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
+  onUnload: function() {
+    // Do something when a section instance is unloaded
+    // Здесь должен быть дестрой если он необходим
+    console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
+
+  },
+
+  // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.
+  onSelect: function() {
+    // Do something when a section instance is selected
+    console.log('onSelect', '');
+  },
+
+  // Shortcut function called when a section is deselected by the Theme Editor 'shopify:section:deselect' event.
+  onDeselect: function() {
+    // Do something when a section instance is deselected
+    console.log('onDeselect', '');
+
+  },
+
+  // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
+  onBlockSelect: function(event) {
+    // Do something when a section block is selected
+    console.log('onBlockSelect');
+  },
+
+  // Shortcut function called when a section block is deselected by the Theme Editor 'shopify:block:deselect' event.
+  onBlockDeselect: function(event) {
+    // Do something when a section block is deselected
+    console.log('onBlockDeselect');
+  }
+});

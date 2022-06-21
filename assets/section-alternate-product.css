@@ -394,7 +394,10 @@
   transform: rotate(90deg);
 }
 
+
+
 .product-accordion__text {
+  display: none;
   margin-top: 40px;
   margin-bottom: 40px;
   color: var(--color-black);
@@ -405,9 +408,12 @@
   letter-spacing: 0.01em;
 }
 
-.product-accordion__text--close {
-  display: none;
+.product-accordion__content--visible .product-accordion__text {
+  display: block;
+  border: 4px solid red;
 }
+
+
 
 /* Accordion end */
 

@@ -1,6 +1,7 @@
 {{ 'section-alternate-product.css' | asset_url | stylesheet_tag }}
 
-<main id="main" class="main">
+
+<main class="main" data-section-id="{{ section.id }}" data-section-type="alternate-main-product">
   <article class="product">
     <div class="product__container">
       <div class="product__gallery">
@@ -352,14 +353,14 @@
       {% if block.type == "accordeon" %}
 
 
-        <section class="product-accordion__container">
+        <section id="{{ block.id }}" class="product-accordion__container" {{ block.shopify_attributes }}>
           <h2 class="product-accordion__heading">
             <button
-              id="product-accordion__title1"
+              id="button-{{ block.id }}"
               class="product-accordion__button product-accordion__button--open"
               type="button"
-              aria-expanded="true"
-              aria-controls="product-accordion__content1"
+              aria-expanded="false"
+              aria-controls="content-{{ block.id }}"
               >
               {{ block.settings.main_product_heading }}
               <span class="product-accordion__button-icon-container">
@@ -369,13 +370,13 @@
           </h2>
 
           <div
-            id="product-accordion__content1"
+            id="content-{{ block.id }}"
             class="product-accordion__content"
-            aria-hidden="false"
-            aria-labelledby="product-accordion__title1"
+            aria-hidden="true"
+            aria-labelledby="button-{{ block.id }}"
           >
             <p
-              class="product-accordion__text product-accordion__text--open"
+              class="product-accordion__text"
               >
               {{ block.settings.main_product_description }}
             </p>
