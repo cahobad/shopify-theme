@@ -396,7 +396,7 @@
 
 
 
-.product-accordion__text {
+.product-accordion__content > p{
   display: none;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -408,9 +408,9 @@
   letter-spacing: 0.01em;
 }
 
-.product-accordion__content--visible .product-accordion__text {
+.product-accordion__content--visible > p {
   display: block;
-  border: 4px solid red;
+  
 }
 
 

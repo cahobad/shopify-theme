@@ -122,11 +122,16 @@ accordionButtons.forEach((button, index) => {
 
 function accordionButtonClick(buttonIndex) {
   
-
   if (accordionButtons[buttonIndex].getAttribute('aria-expanded') == 'true') {
     accordionButtons[buttonIndex].setAttribute('aria-expanded', 'false');
+
+    accordionButtons[buttonIndex].classList.remove('product-accordion__button--open')
+
   } else {
     accordionButtons[buttonIndex].setAttribute('aria-expanded', 'true');
+
+    accordionButtons[buttonIndex].classList.add('product-accordion__button--open')
+    
   }
 
   accordionContents.forEach(block => {
@@ -149,8 +154,6 @@ function accordionButtonClick(buttonIndex) {
   
   
 }
-
-
 
 
 /* Accordion end */

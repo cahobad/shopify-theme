@@ -357,7 +357,7 @@
           <h2 class="product-accordion__heading">
             <button
               id="button-{{ block.id }}"
-              class="product-accordion__button product-accordion__button--open"
+              class="product-accordion__button"
               type="button"
               aria-expanded="false"
               aria-controls="content-{{ block.id }}"
@@ -375,11 +375,9 @@
             aria-hidden="true"
             aria-labelledby="button-{{ block.id }}"
           >
-            <p
-              class="product-accordion__text"
-              >
+           
               {{ block.settings.main_product_description }}
-            </p>
+            
           </div>
         </section>
 
