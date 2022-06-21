@@ -184,6 +184,7 @@ Shopify.theme.sections.register('alternate-main-product', {
   // Shortcut function called when a section is loaded via 'sections.load()' or by the Theme Editor 'shopify:section:load' event.
   onLoad: function() {
     // Do something when a section instance is loaded
+    // console.log('onLoad');
     
     // не успел разобраться, как инициировать аккордион от сюда таким образом, чтобы отрабатывал onBlockSelect
   },
