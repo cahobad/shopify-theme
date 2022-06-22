@@ -182,7 +182,7 @@ Shopify.theme.sections.register('alternate-main-product', {
 
   onLoad: function() {
     // Do something when a section instance is loaded
-    console.log('onLoad');
+    // console.log('onLoad');
     
     this.accordion = new Accordion();
     this.accordion.init();
@@ -192,27 +192,27 @@ Shopify.theme.sections.register('alternate-main-product', {
   onUnload: function() {
     // Do something when a section instance is unloaded
     // Здесь должен быть дестрой если он необходим
-    console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
+    // console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
 
   },
 
   // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.
   onSelect: function() {
     // Do something when a section instance is selected
-    console.log('onSelect', '');
+    // console.log('onSelect', '');
   },
 
   // Shortcut function called when a section is deselected by the Theme Editor 'shopify:section:deselect' event.
   onDeselect: function() {
     // Do something when a section instance is deselected
-    console.log('onDeselect', '');
+    // console.log('onDeselect', '');
 
   },
 
   // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
   onBlockSelect: function(event) {
     // Do something when a section block is selected
-    console.log('onBlockSelect');
+    // console.log('onBlockSelect');
 
     if (this.accordion) {
       this.accordion.accordionButtonClick('button-' + event.target.id);
