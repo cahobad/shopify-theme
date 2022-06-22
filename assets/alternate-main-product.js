@@ -106,75 +106,71 @@ productColors.forEach(color => {
 
 /* Accordion start */
 
+function Accordion() {
+  const accordionButtons = document.querySelectorAll('.product-accordion__button');
 
-// temp without IIFE 🙁
+  const accordionContents = document.querySelectorAll('.product-accordion__content');
 
-const accordionButtons = document.querySelectorAll('.product-accordion__button');
+  this.init = () => {
+    accordionButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        this.accordionButtonClick(button.id);
+      });
+    })
+  }
 
-const accordionContents = document.querySelectorAll('.product-accordion__content');
-
-accordionButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    accordionButtonClick(button.id);
-  });
-})
-
-
-function accordionButtonClick(buttonIndex) {
-
-  accordionButtons.forEach(buton => {
-  
-    if (buton.id === buttonIndex) { // this button was pressed
-
-      if (buton.getAttribute('aria-expanded') == 'true') {
-        // accordion is open. need to close
-        buton.setAttribute('aria-expanded', 'false');
+  this.accordionButtonClick = (buttonIndex) => {
     
-        buton.classList.remove('product-accordion__button--open')
-    
-      } else { 
-        // accordion is close. need to open
-        buton.setAttribute('aria-expanded', 'true');
-    
-        buton.classList.add('product-accordion__button--open')
-      }
-    } else {
-      // other button was pressed
-      if (buton.getAttribute('aria-expanded') == 'true') {
-        // accordion is open. need to close
-        buton.setAttribute('aria-expanded', 'false');
-    
-        buton.classList.remove('product-accordion__button--open')
-    
-      }
-
-    }
-    
-  });
-
-  
-
-  accordionContents.forEach(block => {
-
-    if (block.getAttribute('aria-labelledby') == buttonIndex) {
-      // this block need show
-      block.classList.toggle('product-accordion__content--visible');
+    accordionButtons.forEach(button => {
+        
+      if (button.id === buttonIndex) { // this button was pressed
+        if (button.getAttribute('aria-expanded') == 'true') {
+          // accordion is open. need to close
+          button.setAttribute('aria-expanded', 'false');
       
-      if (block.getAttribute('aria-hidden') == 'true') {
-        block.setAttribute('aria-hidden', 'false')
+          button.classList.remove('product-accordion__button--open')
+      
+        } else { 
+          // accordion is close. need to open
+          button.setAttribute('aria-expanded', 'true');
+      
+          button.classList.add('product-accordion__button--open')
+        }
       } else {
-        block.setAttribute('aria-hidden', 'true')
+        // other button was pressed
+        if (button.getAttribute('aria-expanded') == 'true') {
+          // accordion is open. need to close
+          button.setAttribute('aria-expanded', 'false');
+      
+          button.classList.remove('product-accordion__button--open');
+        }
       }
-    } else {
-      // this block need hidden
-      if (block.getAttribute('aria-hidden') == 'true') {
-        block.setAttribute('aria-hidden', 'false')
+    });
+  
+    accordionContents.forEach(block => {
+  
+      if (block.getAttribute('aria-labelledby') == buttonIndex) {
+        // this block need show
+        block.classList.toggle('product-accordion__content--visible');
+        
+        if (block.getAttribute('aria-hidden') == 'true') {
+          block.setAttribute('aria-hidden', 'false')
+        } else {
+          block.setAttribute('aria-hidden', 'true')
+        }
+      } else {
+        // this block need hidden
+        if (block.getAttribute('aria-hidden') == 'true') {
+          block.setAttribute('aria-hidden', 'false')
+        }
+  
+        block.classList.remove('product-accordion__content--visible');
       }
+    })
 
-      block.classList.remove('product-accordion__content--visible');
-    }
-  })
+  }
 }
+
 
 
 /* Accordion end */
@@ -182,47 +178,52 @@ function accordionButtonClick(buttonIndex) {
 
 Shopify.theme.sections.register('alternate-main-product', {
   // Shortcut function called when a section is loaded via 'sections.load()' or by the Theme Editor 'shopify:section:load' event.
+  accordion: null,
+
   onLoad: function() {
     // Do something when a section instance is loaded
-    // console.log('onLoad');
+    console.log('onLoad');
     
-    // не успел разобраться, как инициировать аккордион от сюда таким образом, чтобы отрабатывал onBlockSelect
+    this.accordion = new Accordion();
+    this.accordion.init();
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
   onUnload: function() {
     // Do something when a section instance is unloaded
     // Здесь должен быть дестрой если он необходим
-    // console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
+    console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
 
   },
 
   // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.
   onSelect: function() {
     // Do something when a section instance is selected
-    // console.log('onSelect', '');
+    console.log('onSelect', '');
   },
 
   // Shortcut function called when a section is deselected by the Theme Editor 'shopify:section:deselect' event.
   onDeselect: function() {
     // Do something when a section instance is deselected
-    // console.log('onDeselect', '');
+    console.log('onDeselect', '');
 
   },
 
   // Shortcut function called when a section block is selected by the Theme Editor 'shopify:block:select' event.
   onBlockSelect: function(event) {
     // Do something when a section block is selected
-    // console.log('onBlockSelect');
+    console.log('onBlockSelect');
 
-    accordionButtonClick('button-' + event.detail.blockId)
- 
+    if (this.accordion) {
+      this.accordion.accordionButtonClick('button-' + event.target.id);
+    }
+
   },
 
   // Shortcut function called when a section block is deselected by the Theme Editor 'shopify:block:deselect' event.
   onBlockDeselect: function(event) {
     // Do something when a section block is deselected
-    // console.log('onBlockDeselect');
+    console.log('onBlockDeselect');
 
   }
 });
