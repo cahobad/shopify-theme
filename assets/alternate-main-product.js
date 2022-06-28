@@ -162,7 +162,7 @@ Shopify.theme.sections.register('alternate-main-product', {
   // Shortcut function called when a section block is deselected by the Theme Editor 'shopify:block:deselect' event.
   onBlockDeselect: function(event) {
     // Do something when a section block is deselected
-    console.log('onBlockDeselect');
+    // console.log('onBlockDeselect');
 
   }
 });
