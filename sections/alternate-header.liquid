@@ -1,6 +1,8 @@
 {{ 'section-alternate-header.css' | asset_url | stylesheet_tag }}
 
-<header class="header" role="banner">
+
+
+<header class="header" role="banner" data-section-id="{{ section.id }}" data-section-type="alternate-header">
   <a class="skip-link" href="#main">Go to content</a>
   <div class="header__container">
 
