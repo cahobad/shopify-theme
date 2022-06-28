@@ -28,12 +28,10 @@ if (productForm) {
     fetch(Shopify.routes.root + 'cart/add.js', {
       method: "POST",
       body: new FormData(event.target),
-    }).then((response) => {
-      console.log('получили какой-то ответ');
-      console.log(response.json());
-      return response.json();
-    }).catch(error => console.error(error));
-  
+    })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(error => console.error(error))
   })
 }
 
