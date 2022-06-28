@@ -32,12 +32,11 @@ if (productForm) {
     .then(response => response.json())
     .then(response => {
       if (response.sections) {
-        console.log(response.sections['alternate-header']);
-
         const cartEvent = new CustomEvent('cart:added', {
           detail: {
             header: response.sections['alternate-header']
-          }
+          },
+          bubbles: true
         });
 
         event.target.dispatchEvent(cartEvent);

@@ -1,6 +1,5 @@
 {{ 'section-alternate-header.css' | asset_url | stylesheet_tag }}
 
-
 <header class="header" role="banner">
   <a class="skip-link" href="#main">Go to content</a>
   <div class="header__container">
@@ -68,6 +67,8 @@
     </nav>
   </div>
 </header>
+
+<script src="{{ 'alternate-header.js' | asset_url }}" defer="defer"></script>
 
 {% schema %}
   {
