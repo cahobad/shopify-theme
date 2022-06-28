@@ -30,7 +30,19 @@ if (productForm) {
       body: new FormData(event.target),
     })
     .then(response => response.json())
-    .then(response => console.log(response))
+    .then(response => {
+      if (response.sections) {
+        console.log(response.sections['alternate-header']);
+
+        const cartEvent = new CustomEvent('cart:added', {
+          detail: {
+            header: response.sections['alternate-header']
+          }
+        });
+
+        event.target.dispatchEvent(cartEvent);
+      }
+    })
     .catch(error => console.error(error))
   })
 }
