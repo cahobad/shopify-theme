@@ -1,11 +1,12 @@
 document.addEventListener('cart:added', (CustomEvent) => {
   const newHeader = CustomEvent.detail.header;
+  const selectorAmountCart = '#product-amount-cart';
 
   const newCartAmount = new DOMParser()
   .parseFromString(newHeader, "text/html")
-  .querySelector('#product-amount-cart')
+  .querySelector(selectorAmountCart)
   .innerHTML;
 
-  document.querySelector('#product-amount-cart').innerHTML = newCartAmount;
+  document.querySelector(selectorAmountCart).innerHTML = newCartAmount;
   
 })
