@@ -42,6 +42,59 @@
         <p class="product__tax">Tax included</p>
 
         <!-- Form start -->
+        {% form 'product', product, id: 'product-form', class: 'product__form product-form' %}
+        
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+        <fieldset class="product-form__fieldset">
+          <legend class="product-form__legend product-form__legend--ls">
+            Quantity
+          </legend>
+
+          <div class="product-form__number-input-container">
+            <button
+                    id="product-decrease-amount"
+                    class="product-form__button product-form__button--small"
+                    type="button"
+                    >
+              −<span class="visually-hidden">decrease quantity</span>
+            </button>
+            <input
+                   id="product-quantity"
+                   class="product-form__number-input"
+                   type="number"
+                   name="quantity"
+                   min="1"
+                   value="1"
+                   aria-label="quantity"
+                   />
+            <button
+                    id="product-increase-amount"
+                    class="product-form__button product-form__button--small"
+                    type="button"
+                    >
+              +<span class="visually-hidden">increase quantity</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <div class="product-form__order-button">
+          <button id="product-form-add-to-cart" class="product-form__button" type="button">
+            add <span class="visually-hidden">unisex t-shirt</span> to cart
+          </button>
+          <button id="product-form-submit"
+                  class="product-form__button product-form__button--submit"
+                  type="submit"
+                  >
+            buy it now <span class="visually-hidden">unisex t-shirt</span>
+          </button>
+        </div>
+ 
+
+        {% endform %}
+
+        <!--  
+
         <form id="product-form" class="product__form product-form">
           <fieldset class="product-form__fieldset">
             <legend class="product-form__legend">Size</legend>
@@ -334,6 +387,8 @@
             </button>
           </div>
         </form>
+
+        -->
         <!-- Form end -->
 
         {%- if product.description != blank -%}
