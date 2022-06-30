@@ -1,7 +1,8 @@
 import {register} from '@shopify/theme-sections';
+import {ProductForm} from '@shopify/theme-product-form';
 
 /* Product start */
-const productForm = document.querySelector('#product-form');
+const myProductForm = document.querySelector('#product-form');
 
 const buttonIncreaseProductAmount = document.querySelector(
   '#product-increase-amount',
@@ -29,8 +30,8 @@ if (buttonDecreaseProductAmount) {
   });
 }
 
-if (productForm) {
-  productForm.addEventListener('submit', (event) => {
+if (myProductForm) {
+  myProductForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     fetch(`${Shopify.routes.root}cart/add.js`, {
@@ -135,13 +136,29 @@ register('alternate-main-product', {
 
     this.accordion = new Accordion();
     this.accordion.init();
+
+    // product form
+
+    if (myProductForm) {
+      fetch(
+        `${Shopify.routes.root}/products/${myProductForm.dataset.handle}.js`,
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((productJSON) => {
+          console.log();
+          this.productForm = new ProductForm(myProductForm, productJSON, {
+            onQuantityChange: console.log('this.onQuantityChange'),
+          });
+        });
+    }
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
   onUnload() {
     // Do something when a section instance is unloaded
-    // Здесь должен быть дестрой если он необходим
-    // console.log('onUnload', 'Здесь должен быть дестрой если он необходим');
+    this.productForm.destroy();
   },
 
   // Shortcut function called when a section is selected by the Theme Editor 'shopify:section:select' event.

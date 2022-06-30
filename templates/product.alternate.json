@@ -3,7 +3,36 @@
   "sections": {
     "alternate-main-product": {
       "type": "alternate-main-product",
-      "settings": {}
+      "blocks": {
+        "b4e28629-92c5-49f0-b3f3-01fc41ee9830": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "Main product",
+            "main_product_description": "<p>asdfasdfasdf<\/p>"
+          }
+        },
+        "a185ac51-730b-466b-9bc8-ff94032e3c0a": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "Main productasdfasdfasdf",
+            "main_product_description": "<p>asdfasdf<\/p>"
+          }
+        },
+        "8b6e8906-a336-4923-9cf0-dda8d937796f": {
+          "type": "accordeon",
+          "settings": {
+            "main_product_heading": "sssss",
+            "main_product_description": "<p>asdfasdfasdf<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "b4e28629-92c5-49f0-b3f3-01fc41ee9830",
+        "a185ac51-730b-466b-9bc8-ff94032e3c0a",
+        "8b6e8906-a336-4923-9cf0-dda8d937796f"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [

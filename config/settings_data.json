@@ -176,6 +176,40 @@
         "settings": {
           "color_scheme": "background-1"
         }
+      },
+      "alternate-header": {
+        "type": "alternate-header",
+        "settings": {
+          "logo_image": "shopify:\/\/shop_images\/susparsa-logo.png",
+          "main_menu": "main-menu"
+        }
+      },
+      "alternate-footer": {
+        "type": "alternate-footer",
+        "blocks": {
+          "dd7377b7-126c-4511-83e6-da25581bb430": {
+            "type": "about",
+            "settings": {
+              "footer_linklist_title": "About",
+              "paragraph": "<p>asdfas sad fasd sd fsda fsd adf <\/p>",
+              "footer_facebook_link": "https:\/\/facebook.com\/",
+              "footer_instagram_link": "https:\/\/instagram.com\/"
+            }
+          },
+          "ea8c2940-bea6-4d70-a5eb-40966b3fb3a1": {
+            "type": "menu",
+            "settings": {
+              "footer_nav_title": "Navigation",
+              "footer_menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "dd7377b7-126c-4511-83e6-da25581bb430",
+          "ea8c2940-bea6-4d70-a5eb-40966b3fb3a1"
+        ],
+        "settings": {
+        }
       }
     },
     "content_for_index": [
