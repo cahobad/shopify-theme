@@ -4,47 +4,38 @@
     "alternate-main-product": {
       "type": "alternate-main-product",
       "blocks": {
-        "cecfe5a5-fcf0-4463-9019-a85991283b01": {
+        "b4e28629-92c5-49f0-b3f3-01fc41ee9830": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "White T-shirt",
-            "main_product_description": "<p>lorem ipsum<\/p>"
+            "main_product_heading": "Main product",
+            "main_product_description": "<p>asdfasdfasdf<\/p>"
           }
         },
-        "e3127f49-2310-4d80-a923-242917adc01a": {
+        "a185ac51-730b-466b-9bc8-ff94032e3c0a": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "title 2",
-            "main_product_description": "<p>lorem for title 2<\/p>"
+            "main_product_heading": "Main productasdfasdfasdf",
+            "main_product_description": "<p>asdfasdf<\/p>"
           }
         },
-        "80050911-644e-4595-a54c-476d450c6588": {
+        "8b6e8906-a336-4923-9cf0-dda8d937796f": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "title 3",
-            "main_product_description": "<p>lorem for title 3<\/p>"
+            "main_product_heading": "sssss",
+            "main_product_description": "<p>asdfasdfasdf<\/p>"
           }
         }
       },
       "block_order": [
-        "cecfe5a5-fcf0-4463-9019-a85991283b01",
-        "e3127f49-2310-4d80-a923-242917adc01a",
-        "80050911-644e-4595-a54c-476d450c6588"
+        "b4e28629-92c5-49f0-b3f3-01fc41ee9830",
+        "a185ac51-730b-466b-9bc8-ff94032e3c0a",
+        "8b6e8906-a336-4923-9cf0-dda8d937796f"
       ],
       "settings": {
-      }
-    },
-    "alternate-product-recomendations": {
-      "type": "alternate-product-recomendations",
-      "settings": {
-        "alternate_product_recomendations_title": "Lorem ipsum",
-        "alternate_product_recomendations_collection": "fruits",
-        "alternate_product_recomendations_limit": 4
       }
     }
   },
   "order": [
-    "alternate-main-product",
-    "alternate-product-recomendations"
+    "alternate-main-product"
   ]
 }

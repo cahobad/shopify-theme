@@ -42,8 +42,31 @@
         <p class="product__tax">Tax included</p>
 
         <!-- Form start -->
-        {% form 'product', product, id: 'product-form', class: 'product__form product-form' %}
+        {% form 'product', product, id: 'product-form', class: 'product__form product-form', data-handle: product.handle %}
+
+        {% for product_option in product.options_with_values %}
+        <fieldset>
+          <legend>{{ product_option.name }}</legend>
+          {% for option_value in product_option.values %}
+            <label>
+              <input type="radio" name="options[{{ product_option.name | escape }}]" value="{{ option_value | escape }}" 
+                {%- if product_option.selected_value == option_value -%} checked {%- endif -%}>
+              {{ option_value | escape }}
+            </label>
+          {% endfor %}
+        </fieldset>
+          
+        {% endfor %}
+
         
+        <noscript>
+          <select name="id" id="product-select">
+            {% for variable in product.variants %}
+              <option {% if variable.selected_or_first_available_variant.id == variable.id %}selected{% endif %}>{{ variable.title }}</option>
+            {% endfor %}
+          </select>
+        </noscript>
+
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
 
         <input type="hidden" name="sections" value="alternate-header">
