@@ -1,0 +1,72 @@
+/* Variables start */
+:root {
+  --color-black: #1a1f29;
+  --color-white: #fff;
+  --color-disabled-1: #646464;
+  --color-disabled-2: #4f5157;
+  --color-primary: #171c8f;
+  --color-tertiary-1: #3d4044;
+  --mobile-size: 241px;
+  --tablet-size: 480px;
+  --laptop-size: 768px;
+  --desktop-small-size: 1024px;
+  --desktop-medium-size: 1200px;
+  --desktop-large-size: 1440px;
+}
+
+/* Variables end */
+
+/* Base start */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-black);
+  font-weight: normal;
+  font-size: 16px;
+  font-family: 'Avenir Next Rounded Std', sans-serif;
+  font-style: normal;
+  line-height: 1.1;
+  text-align: left;
+  background-color: var(--color-white);
+}
+
+/* Base end */
+
+/* other start */
+
+.skip-link {
+  position: absolute;
+  top: -200px;
+  left: 2px;
+  padding: 5px 10px;
+  color: inherit;
+  background-color: #fff;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 20px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+}
+
+/* other end */
