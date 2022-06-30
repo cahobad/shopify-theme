@@ -9,21 +9,10 @@
     
     {{content_for_header}}
 
-    <link rel="stylesheet" href="{{ 'alternate-base.css' | asset_url }}" />
+    <link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}" />
 
-    <script src="{{ 'theme-sections.min.js' | asset_url }}" defer></script>
-    
-    <script src="{{ 'alternate-main-product.js' | asset_url }}" defer></script>
+    <script src="{{ 'theme.min.js' | asset_url }}" defer></script>
 
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        
-        Shopify.theme.sections.load('alternate-main-product');
-
-        Shopify.theme.sections.load('alternate-header');
-
-      })
-  </script>
 
   </head>
   <body>
