@@ -119,11 +119,12 @@
         "type": "header",
         "settings": {
           "color_scheme": "background-1",
-          "logo_width": 90,
+          "logo": "shopify:\/\/shop_images\/350e01e9ae0708ccb501c6fee9378273_1.png",
+          "logo_width": 110,
           "logo_position": "middle-left",
           "menu": "main-menu",
           "menu_type_desktop": "dropdown",
-          "show_line_separator": true,
+          "show_line_separator": false,
           "enable_sticky_header": true,
           "margin_bottom": 0
         }
@@ -131,33 +132,24 @@
       "footer": {
         "type": "footer",
         "blocks": {
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "Our mission",
+              "subtext": "<p>Share contact information, store details,<br\/>and brand content with your customers.<\/p>"
+            }
+          },
           "footer-0": {
             "type": "link_list",
             "settings": {
               "heading": "Quick links",
               "menu": "footer"
             }
-          },
-          "footer-1": {
-            "type": "link_list",
-            "disabled": true,
-            "settings": {
-              "heading": "Info",
-              "menu": "footer"
-            }
-          },
-          "footer-2": {
-            "type": "text",
-            "settings": {
-              "heading": "Our mission",
-              "subtext": "<p>Share contact information, store details, and brand content with your customers.<\/p>"
-            }
           }
         },
         "block_order": [
-          "footer-0",
-          "footer-1",
-          "footer-2"
+          "footer-2",
+          "footer-0"
         ],
         "settings": {
           "color_scheme": "background-1",
@@ -183,65 +175,6 @@
         "type": "main-password-footer",
         "settings": {
           "color_scheme": "background-1"
-        }
-      },
-      "alternate-header": {
-        "type": "alternate-header",
-        "settings": {
-          "logo_image": "shopify:\/\/shop_images\/susparsa-logo.png",
-          "main_menu": "main-menu"
-        }
-      },
-      "alternate-footer": {
-        "type": "alternate-footer",
-        "blocks": {
-          "4f57efcc-4431-4bd6-a8af-44256b28339f": {
-            "type": "about",
-            "settings": {
-              "footer_linklist_title": "About",
-              "paragraph": "<p>lorem ipsum<\/p>",
-              "footer_facebook_link": "https:\/\/facebook.com\/",
-              "footer_instagram_link": "https:\/\/instagram.com\/"
-            }
-          },
-          "53bb9d1c-84b8-404f-b37f-76bc52e5294b": {
-            "type": "menu",
-            "settings": {
-              "footer_nav_title": "Navigation",
-              "footer_menu": "footer"
-            }
-          }
-        },
-        "block_order": [
-          "4f57efcc-4431-4bd6-a8af-44256b28339f",
-          "53bb9d1c-84b8-404f-b37f-76bc52e5294b"
-        ],
-        "settings": {
-        }
-      },
-      "alternate-main-product": {
-        "type": "alternate-main-product",
-        "blocks": {
-          "cecfe5a5-fcf0-4463-9019-a85991283b01": {
-            "type": "accordeon",
-            "settings": {
-              "main_product_heading": "White T-shirt",
-              "main_product_description": "<p>lorem ipsum<\/p>"
-            }
-          }
-        },
-        "block_order": [
-          "cecfe5a5-fcf0-4463-9019-a85991283b01"
-        ],
-        "settings": {
-        }
-      },
-      "alternate-product-recomendations": {
-        "type": "alternate-product-recomendations",
-        "settings": {
-          "alternate_product_recomendations_title": "Lorem ipsum",
-          "alternate_product_recomendations_collection": "",
-          "alternate_product_recomendations_limit": 4
         }
       }
     },
