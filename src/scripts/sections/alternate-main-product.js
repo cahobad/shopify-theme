@@ -1,5 +1,5 @@
 import {register} from '@shopify/theme-sections';
-import {ProductForm} from '@shopify/theme-product-form';
+import {ProductForm, getUrlWithVariant} from '@shopify/theme-product-form';
 
 /* Product start */
 const myProductForm = document.querySelector('#product-form');
@@ -40,17 +40,16 @@ if (myProductForm) {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.sections) {
-          const cartEvent = new CustomEvent('cart:added', {
-            detail: {
-              header: response.sections['alternate-header'],
-            },
-            bubbles: true,
-          });
+        const cartEvent = new CustomEvent('cart:added', {
+          detail: {
+            header: response.sections['alternate-header'],
+          },
+          bubbles: true,
+        });
 
-          event.target.dispatchEvent(cartEvent);
-        }
+        event.target.dispatchEvent(cartEvent);
       })
+      // eslint-disable-next-line no-console
       .catch((error) => console.error(error));
   });
 }
@@ -91,19 +90,21 @@ function Accordion() {
 
           button.classList.add('product-accordion__button--open');
         }
-      } else {
-        // other button was pressed
-        if (button.getAttribute('aria-expanded') == 'true') {
-          // accordion is open. need to close
-          button.setAttribute('aria-expanded', 'false');
+      }
 
-          button.classList.remove('product-accordion__button--open');
-        }
+      if (
+        button.id !== buttonIndex &&
+        button.getAttribute('aria-expanded') === 'true'
+      ) {
+        // other button was pressed and accordion is open. need to close
+        button.setAttribute('aria-expanded', 'false');
+
+        button.classList.remove('product-accordion__button--open');
       }
     });
 
     accordionContents.forEach((block) => {
-      if (block.getAttribute('aria-labelledby') == buttonIndex) {
+      if (block.getAttribute('aria-labelledby') === buttonIndex) {
         // this block need show
         block.classList.toggle('product-accordion__content--visible');
 
@@ -140,19 +141,34 @@ register('alternate-main-product', {
     // product form
 
     if (myProductForm) {
-      fetch(
-        `${Shopify.routes.root}/products/${myProductForm.dataset.handle}.js`,
-      )
+      fetch(`${Shopify.routes.root}products/${myProductForm.dataset.handle}.js`)
         .then((response) => {
           return response.json();
         })
         .then((productJSON) => {
           console.log();
           this.productForm = new ProductForm(myProductForm, productJSON, {
-            onQuantityChange: console.log('this.onQuantityChange'),
+            onOptionChange: this.onOptionChange,
+            onFormSubmit: this.onFormSubmit,
           });
         });
     }
+  },
+
+  onOptionChange: (event) => {
+    const variant = event.dataset.variant;
+    if (!variant) {
+      console.log('такого варианта нет');
+      return false;
+    }
+    const url = getUrlWithVariant(window.location.href, variant.id);
+    console.log(url);
+    window.history.replaceState({path: url}, '', url);
+  },
+
+  onFormSubmit: (event) => {
+    event.preventDefault();
+    console.log('onFormSubmit', event);
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
