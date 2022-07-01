@@ -11,6 +11,8 @@ const buttonDecreaseProductAmount = document.querySelector(
   '#product-decrease-amount',
 );
 
+const warningField = document.querySelector('#product-warning');
+
 if (buttonIncreaseProductAmount) {
   buttonIncreaseProductAmount.addEventListener('click', () => {
     document.querySelector('#product-quantity').value =
@@ -133,11 +135,17 @@ register('alternate-main-product', {
   },
 
   onOptionChange: (event) => {
+    // hidden warning with error 422
+    if (warningField.textContent) {
+      warningField.textContent = '';
+    }
+
     const variant = event.dataset.variant;
     if (!variant) {
       return false;
     }
     const url = getUrlWithVariant(window.location.href, variant.id);
+
     window.history.replaceState({path: url}, '', url);
     return true;
   },
@@ -148,20 +156,31 @@ register('alternate-main-product', {
     fetch(`${Shopify.routes.root}cart/add.js`, {
       method: 'POST',
       body: new FormData(event.target),
+      headers: {'x-requested-with': 'XMLHttpRequest'},
     })
       .then((response) => response.json())
-      .then((response) => {
-        const cartEvent = new CustomEvent('cart:added', {
-          detail: {
-            header: response.sections['alternate-header'],
-          },
-          bubbles: true,
-        });
 
-        event.target.dispatchEvent(cartEvent);
+      .then((response) => {
+        if (response.status === 422) {
+          warningField.innerText = `${response.message}. ${response.description}`;
+
+          return false;
+        } else {
+          const cartEvent = new CustomEvent('cart:added', {
+            detail: {
+              header: response.sections['alternate-header'],
+            },
+            bubbles: true,
+          });
+
+          event.target.dispatchEvent(cartEvent);
+          return true;
+        }
       })
-      // eslint-disable-next-line no-console
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
