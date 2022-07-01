@@ -55,7 +55,7 @@ function Accordion() {
     accordionButtons.forEach((button) => {
       if (button.id === buttonIndex) {
         // this button was pressed
-        if (button.getAttribute('aria-expanded') == 'true') {
+        if (button.getAttribute('aria-expanded') === 'true') {
           // accordion is open. need to close
           button.setAttribute('aria-expanded', 'false');
 
@@ -84,14 +84,14 @@ function Accordion() {
         // this block need show
         block.classList.toggle('product-accordion__content--visible');
 
-        if (block.getAttribute('aria-hidden') == 'true') {
+        if (block.getAttribute('aria-hidden') === 'true') {
           block.setAttribute('aria-hidden', 'false');
         } else {
           block.setAttribute('aria-hidden', 'true');
         }
       } else {
         // this block need hidden
-        if (block.getAttribute('aria-hidden') == 'true') {
+        if (block.getAttribute('aria-hidden') === 'true') {
           block.setAttribute('aria-hidden', 'false');
         }
 
@@ -122,29 +122,28 @@ register('alternate-main-product', {
           return response.json();
         })
         .then((productJSON) => {
-          console.log();
           this.productForm = new ProductForm(myProductForm, productJSON, {
             onOptionChange: this.onOptionChange,
             onFormSubmit: this.onFormSubmit,
           });
-        });
+        })
+        // eslint-disable-next-line no-console
+        .catch((error) => console.error(error));
     }
   },
 
   onOptionChange: (event) => {
     const variant = event.dataset.variant;
     if (!variant) {
-      console.log('такого варианта нет');
       return false;
     }
     const url = getUrlWithVariant(window.location.href, variant.id);
-    console.log(url);
     window.history.replaceState({path: url}, '', url);
+    return true;
   },
 
   onFormSubmit: (event) => {
     event.preventDefault();
-    console.log('onFormSubmit', event);
 
     fetch(`${Shopify.routes.root}cart/add.js`, {
       method: 'POST',
