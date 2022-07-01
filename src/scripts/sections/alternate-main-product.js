@@ -4,6 +4,9 @@ import {ProductForm, getUrlWithVariant} from '@shopify/theme-product-form';
 /* Product start */
 const myProductForm = document.querySelector('#product-form');
 
+const buttonAddToCard = document.querySelector('#add-to-card');
+const buttonBuyItNow = document.querySelector('#buy-it-now');
+
 const buttonIncreaseProductAmount = document.querySelector(
   '#product-increase-amount',
 );
@@ -141,13 +144,21 @@ register('alternate-main-product', {
     }
 
     const variant = event.dataset.variant;
+    console.log(variant);
     if (!variant) {
       return false;
     }
-    const url = getUrlWithVariant(window.location.href, variant.id);
 
-    window.history.replaceState({path: url}, '', url);
-    return true;
+    if (variant.available) {
+      buttonAddToCard.disabled = false;
+      buttonBuyItNow.disabled = false;
+      const url = getUrlWithVariant(window.location.href, variant.id);
+
+      window.history.replaceState({path: url}, '', url);
+    } else {
+      buttonAddToCard.disabled = true;
+      buttonBuyItNow.disabled = true;
+    }
   },
 
   onFormSubmit: (event) => {

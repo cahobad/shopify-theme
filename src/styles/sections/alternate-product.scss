@@ -271,6 +271,11 @@
   background-color: var(--color-disabled-2);
 }
 
+.product-form__button:disabled {
+  cursor: default;
+  background-color: darken(var(--color-disabled-2), 20);
+}
+
 .product-form__button--small {
   min-width: 40px;
   padding: 9px 0;
