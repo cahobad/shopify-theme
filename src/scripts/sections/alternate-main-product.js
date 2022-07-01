@@ -14,6 +14,8 @@ const buttonDecreaseProductAmount = document.querySelector(
   '#product-decrease-amount',
 );
 
+const productPrice = document.querySelector('#product-price');
+
 const warningField = document.querySelector('#product-warning');
 
 if (buttonIncreaseProductAmount) {
@@ -144,21 +146,29 @@ register('alternate-main-product', {
     }
 
     const variant = event.dataset.variant;
-    console.log(variant);
     if (!variant) {
       return false;
     }
 
     if (variant.available) {
+      // enable buttons
       buttonAddToCard.disabled = false;
       buttonBuyItNow.disabled = false;
-      const url = getUrlWithVariant(window.location.href, variant.id);
-
-      window.history.replaceState({path: url}, '', url);
     } else {
+      // disable buttons
       buttonAddToCard.disabled = true;
       buttonBuyItNow.disabled = true;
     }
+
+    // change url 🤔
+    const url = getUrlWithVariant(window.location.href, variant.id);
+    window.history.replaceState({path: url}, '', url);
+
+    // change price
+    const newPrice = variant.price / 100;
+    productPrice.textContent = newPrice;
+
+    return true;
   },
 
   onFormSubmit: (event) => {
