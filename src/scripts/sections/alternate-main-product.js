@@ -30,30 +30,6 @@ if (buttonDecreaseProductAmount) {
   });
 }
 
-if (myProductForm) {
-  myProductForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    fetch(`${Shopify.routes.root}cart/add.js`, {
-      method: 'POST',
-      body: new FormData(event.target),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        const cartEvent = new CustomEvent('cart:added', {
-          detail: {
-            header: response.sections['alternate-header'],
-          },
-          bubbles: true,
-        });
-
-        event.target.dispatchEvent(cartEvent);
-      })
-      // eslint-disable-next-line no-console
-      .catch((error) => console.error(error));
-  });
-}
-
 /* Product end */
 
 /* Accordion start */
@@ -169,6 +145,24 @@ register('alternate-main-product', {
   onFormSubmit: (event) => {
     event.preventDefault();
     console.log('onFormSubmit', event);
+
+    fetch(`${Shopify.routes.root}cart/add.js`, {
+      method: 'POST',
+      body: new FormData(event.target),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        const cartEvent = new CustomEvent('cart:added', {
+          detail: {
+            header: response.sections['alternate-header'],
+          },
+          bubbles: true,
+        });
+
+        event.target.dispatchEvent(cartEvent);
+      })
+      // eslint-disable-next-line no-console
+      .catch((error) => console.error(error));
   },
 
   // Shortcut function called when a section unloaded by the Theme Editor 'shopify:section:unload' event.
