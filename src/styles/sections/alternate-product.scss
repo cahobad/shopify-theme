@@ -273,7 +273,7 @@
 
 .product-form__button:disabled {
   cursor: default;
-  background-color: darken(var(--color-disabled-2), 20);
+  background-color: darken(gray, 20);
 }
 
 .product-form__button--small {

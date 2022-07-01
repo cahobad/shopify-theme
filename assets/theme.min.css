@@ -843,7 +843,7 @@ body {
 
 .product-form__button:disabled {
   cursor: default;
-  background-color: black;
+  background-color: #4d4d4d;
 }
 
 .product-form__button--small {
