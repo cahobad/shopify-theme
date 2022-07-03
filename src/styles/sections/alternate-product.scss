@@ -133,7 +133,7 @@
   &:checked ~ .radio__label {
     border: 2px solid var(--color-black);
     background-color: var(--color-primary);
-    color: #fff;
+    color: var(--color-white);
   }
   
   &:focus-visible ~ .radio__label {
@@ -171,7 +171,7 @@
   line-height: 1.25;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  background: #fff;
+  background: var(--color-white);
   border: 2px solid var(--color-disabled-1);
   cursor: pointer;
 
@@ -202,7 +202,7 @@
     line-height: 1.23;
     white-space: nowrap;
     text-transform: capitalize;
-    background-color: #fff;
+    background-color: var(--color-white);
     border: 1px solid #ccc;
   }
 }
@@ -258,14 +258,14 @@
   line-height: 1.21;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: var(--color-white);
   border: 1px solid var(--color-disabled-1);
   cursor: pointer;
   transition: background-color 0.25s ease;
 
   &:hover {
-    color: var(--color-black);
-    background-color: var(--color-disabled-1);
+    color: var(--color-white);
+    background-color: var(--color-primary);
     border: 1px solid var(--color-primary);
   }
 
@@ -275,7 +275,8 @@
 
   &:disabled {
     cursor: default;
-    background-color: darken(gray, 20);
+    background-color: var(--color-disabled-1);
+    color: var(--color-white);
   }
 }
 
@@ -291,6 +292,15 @@
   margin-top: 11px;
   color: var(--color-white);
   background-color: var(--color-primary);
+
+  &:hover {
+    background-color: var(--color-black);
+    border: 1px solid var(--color-primary);
+  }
+
+  &:active {
+    background-color: var(--color-black);
+  }
 }
 
 .product-form__number-input {
@@ -537,7 +547,7 @@
   margin-right: 4px;
   color: transparent;
   font-size: 0;
-  border: 2px solid #fff;
+  border: 2px solid var(--color-white);
 }
 
 .more-goods__color:last-child {
@@ -570,7 +580,7 @@
   font-size: 13px;
   font-style: normal;
   line-height: 1.23;
-  background-color: #fff;
+  background-color: var(--color-white);
 }
 
 .more-goods__price {

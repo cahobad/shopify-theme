@@ -669,7 +669,7 @@ body {
 .radio__input:checked ~ .radio__label {
   border: 2px solid var(--color-black);
   background-color: var(--color-primary);
-  color: #fff;
+  color: var(--color-white);
 }
 .radio__input:focus-visible ~ .radio__label {
   outline: 2px solid var(--color-primary);
@@ -723,7 +723,7 @@ body {
   line-height: 1.25;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  background: #fff;
+  background: var(--color-white);
   border: 2px solid var(--color-disabled-1);
   cursor: pointer;
 }
@@ -751,7 +751,7 @@ body {
   line-height: 1.23;
   white-space: nowrap;
   text-transform: capitalize;
-  background-color: #fff;
+  background-color: var(--color-white);
   border: 1px solid #ccc;
 }
 
@@ -815,7 +815,7 @@ body {
   line-height: 1.21;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  background-color: #fff;
+  background-color: var(--color-white);
   border: 1px solid var(--color-disabled-1);
   cursor: pointer;
   -webkit-transition: background-color 0.25s ease;
@@ -824,8 +824,8 @@ body {
   transition: background-color 0.25s ease;
 }
 .product-form__button:hover {
-  color: var(--color-black);
-  background-color: var(--color-disabled-1);
+  color: var(--color-white);
+  background-color: var(--color-primary);
   border: 1px solid var(--color-primary);
 }
 .product-form__button:active {
@@ -833,7 +833,8 @@ body {
 }
 .product-form__button:disabled {
   cursor: default;
-  background-color: #4d4d4d;
+  background-color: var(--color-disabled-1);
+  color: var(--color-white);
 }
 
 .product-form__button--small {
@@ -848,6 +849,13 @@ body {
   margin-top: 11px;
   color: var(--color-white);
   background-color: var(--color-primary);
+}
+.product-form__button--submit:hover {
+  background-color: var(--color-black);
+  border: 1px solid var(--color-primary);
+}
+.product-form__button--submit:active {
+  background-color: var(--color-black);
 }
 
 .product-form__number-input {
@@ -1188,7 +1196,7 @@ body {
   margin-right: 4px;
   color: transparent;
   font-size: 0;
-  border: 2px solid #fff;
+  border: 2px solid var(--color-white);
 }
 
 .more-goods__color:last-child {
@@ -1221,7 +1229,7 @@ body {
   font-size: 13px;
   font-style: normal;
   line-height: 1.23;
-  background-color: #fff;
+  background-color: var(--color-white);
 }
 
 .more-goods__price {
