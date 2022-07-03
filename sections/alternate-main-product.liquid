@@ -49,10 +49,11 @@
           <legend class="product-form__legend">{{ product_option.name }}</legend>
           <div class="product-form__radio">
           {% for option_value in product_option.values %}
+          
           <span class="radio__container">
-            <label class="radio__label">
-              <input class="radio__input" type="radio" name="options[{{ product_option.name | escape }}]" value="{{ option_value | escape }}" 
-                {%- if product_option.selected_value == option_value -%} checked {%- endif -%}>
+            <input class="radio__input" type="radio" name="options[{{ product_option.name | escape }}]" value="{{ option_value | escape }}" id="{{option_value}}" 
+                {% if product_option.selected_value == option_value -%} checked {%- endif -%}>
+            <label class="radio__label" for="{{option_value}}">
               {{ option_value | escape }}
             </label>
           </span>
