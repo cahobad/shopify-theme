@@ -7,22 +7,22 @@
         "b4e28629-92c5-49f0-b3f3-01fc41ee9830": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "Main product",
-            "main_product_description": "<p>asdfasdfasdf<\/p>"
+            "main_product_heading": "Title 1",
+            "main_product_description": "<p>lorem ipsum dolor one one one<\/p>"
           }
         },
         "a185ac51-730b-466b-9bc8-ff94032e3c0a": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "Main productasdfasdfasdf",
-            "main_product_description": "<p>asdfasdf<\/p>"
+            "main_product_heading": "title 2",
+            "main_product_description": "<p>lorem ipsum dolor two two two<\/p>"
           }
         },
         "8b6e8906-a336-4923-9cf0-dda8d937796f": {
           "type": "accordeon",
           "settings": {
-            "main_product_heading": "sssss",
-            "main_product_description": "<p>asdfasdfasdf<\/p>"
+            "main_product_heading": "title 3",
+            "main_product_description": "<p>lorem ipsum bla bla bla<\/p>"
           }
         }
       },
@@ -33,9 +33,18 @@
       ],
       "settings": {
       }
+    },
+    "165686002209a759c2": {
+      "type": "alternate-product-recomendations",
+      "settings": {
+        "alternate_product_recomendations_title": "Lorem ipsum",
+        "alternate_product_recomendations_collection": "fruits",
+        "alternate_product_recomendations_limit": 4
+      }
     }
   },
   "order": [
-    "alternate-main-product"
+    "alternate-main-product",
+    "165686002209a759c2"
   ]
 }
